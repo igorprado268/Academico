@@ -34,6 +34,7 @@ urlpatterns = [
 path('admin/', admin.site.urls),
 path('', IndexView.as_view(), name='index'),
 path('pessoas/', PessoasView.as_view(), name='pessoa'),
+path('cidades/', CidadesView.as_view(), name='cidade'),
 path('ocupacoes/', OcupacoesView.as_view(), name='ocupacao'),
 path('instituicoes/', InstituicoesView.as_view(), name='instituicao'),
 path('areasaber/', AreasSaberView.as_view(), name='areasaber'),
