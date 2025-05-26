@@ -84,6 +84,8 @@ class DisciplinaAdmin(admin.ModelAdmin):
 class TurmaAdmin(admin.ModelAdmin):
     inlines = [MatriculaInline]
 
+class CidadeAdmin(admin.ModelAdmin):
+    inlines = [InstituicaoInline]
 
 # *************registro dos modelos********************
 
@@ -93,10 +95,10 @@ admin.site.register(AreaSaber, AreaSaberAdmin)
 admin.site.register(Curso, CursoAdmin)
 admin.site.register(Disciplina, DisciplinaAdmin)
 admin.site.register(Turma, TurmaAdmin)
+admin.site.register(Cidade, CidadeAdmin)
 
 # modelos sem inlines
 admin.site.register(Pessoa)
-admin.site.register(Cidade)
 admin.site.register(Turno)
 admin.site.register(TipoAvaliacao)
 admin.site.register(CursoDisciplina)
