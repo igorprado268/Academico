@@ -60,11 +60,11 @@ class OcorrenciaInline(admin.TabularInline):
 class CursoDisciplinaInline(admin.TabularInline):
     model = CursoDisciplina
     extra = 1
+class DisciplinaInline(admin.TabularInline):
+    model = Disciplina
+    extra = 1
 
 # **********************************
-
-class CidadeAdmin(admin.ModelAdmin):
-    inlines = [PessoaInline, InstituicaoInline]
 
 class OcupacaoAdmin(admin.ModelAdmin):
     inlines = [PessoaInline]
@@ -76,27 +76,28 @@ class AreaSaberAdmin(admin.ModelAdmin):
     inlines = [CursoInline]
 
 class CursoAdmin(admin.ModelAdmin):
-    inlines = [MatriculaInline, AvaliacaoInline, FrequenciaInline, OcorrenciaInline, CursoDisciplinaInline]
-
-class PessoaAdmin(admin.ModelAdmin):
-    inlines = [MatriculaInline, FrequenciaInline, OcorrenciaInline]
+    inlines = [DisciplinaInline]
 
 class DisciplinaAdmin(admin.ModelAdmin):
-    inlines = [AvaliacaoInline, FrequenciaInline, OcorrenciaInline, CursoDisciplinaInline]
+    inlines = [AvaliacaoInline]
+
+class TurmaAdmin(admin.ModelAdmin):
+    inlines = [MatriculaInline]
+
 
 # *************registro dos modelos********************
 
-admin.site.register(Cidade, CidadeAdmin)
 admin.site.register(Ocupacao, OcupacaoAdmin)
-admin.site.register(Pessoa, PessoaAdmin)
 admin.site.register(Instituicao, InstituicaoAdmin)
 admin.site.register(AreaSaber, AreaSaberAdmin)
 admin.site.register(Curso, CursoAdmin)
 admin.site.register(Disciplina, DisciplinaAdmin)
+admin.site.register(Turma, TurmaAdmin)
 
 # modelos sem inlines
+admin.site.register(Pessoa)
+admin.site.register(Cidade)
 admin.site.register(Turno)
-admin.site.register(Turma)
 admin.site.register(TipoAvaliacao)
 admin.site.register(CursoDisciplina)
 

@@ -77,6 +77,14 @@ class Turno(models.Model):
 class Disciplina(models.Model):
     nome = models.CharField(max_length=100)
     area_saber = models.ForeignKey(AreaSaber, on_delete=models.SET_NULL, null=True)
+    curso = models.ForeignKey(Curso, on_delete=models.SET_NULL, null=True)
+
+    def __str__(self):
+        return self.nome
+
+class Turma(models.Model):
+    nome = models.CharField(max_length=100)
+    turno = models.ForeignKey(Turno, on_delete=models.SET_NULL, null=True)
 
     def __str__(self):
         return self.nome
@@ -88,6 +96,8 @@ class Matricula(models.Model):
     pessoa = models.ForeignKey(Pessoa, on_delete=models.CASCADE)
     data_inicio = models.DateField()
     data_previsao_termino = models.DateField()
+    turma = models.ForeignKey(Turma, on_delete=models.SET_NULL, null=True)
+
 
     def __str__(self):
         return f"{self.pessoa} - {self.curso}"
@@ -120,13 +130,6 @@ class Frequencia(models.Model):
     def __str__(self):
         return f"{self.pessoa} - {self.disciplina}"
 
-
-class Turma(models.Model):
-    nome = models.CharField(max_length=100)
-    turno = models.ForeignKey(Turno, on_delete=models.SET_NULL, null=True)
-
-    def __str__(self):
-        return self.nome
 
 
 class Ocorrencia(models.Model):
